@@ -30,15 +30,26 @@ public interface ChestRepository extends SpigonateRepository<String, PrivateChes
     Optional<PrivateChest> findByName(String name);
 
     /**
-     * Search for all private chests where the limit is greater than the @param amount
+     * Search for all private chests.
+     * Order the results by descreasing and will limit results up to 100
+     *
+     * @return 10 sorted values by limit
+     */
+    @OrderBy(value = "limits", type = OrderType.DESC)
+    @Distinct
+    Collection<PrivateChest> findAllSorted();
+
+    /**
+     * Search for all private chests where the limit is greater than the @param limit
      * also, this will order the results by ascending and will limit results up to 10
      *
-     * @param amount limit amount
+     * @param limit param used to determine how much the player needs to be searched for
      * @return 10 sorted values by limit
      */
     @Limit(10)
     @OrderBy(value = "limits", type = OrderType.ASC)
     @Distinct
-    Collection<PrivateChest> findAllByLimits(@Gt int amount);
+    Collection<PrivateChest> findAllByLimits(@Gt int limit);
+
 
 }

@@ -5,7 +5,7 @@ import br.com.blecaute.inventory.button.Button;
 import br.com.blecaute.inventory.button.ButtonType;
 import br.com.blecaute.inventory.configuration.PaginatedConfiguration;
 import com.google.common.collect.Lists;
-import gg.cubo.essentials.Main;
+import gg.cubo.essentials.Essentials;
 import gg.cubo.essentials.entity.PrivateChest;
 import gg.cubo.essentials.entity.chest.ChestContent;
 import gg.cubo.essentials.entity.chest.repository.ChestContentRepository;
@@ -28,7 +28,7 @@ public class IconInventory {
 
 
     public static void open(@NotNull Player player, @NotNull PrivateChest chest, @NotNull ChestContent content) {
-        ChestContentRepository repository = (ChestContentRepository) Main.getInstance().getSpigonate()
+        ChestContentRepository repository = (ChestContentRepository) Essentials.getInstance().getSpigonate()
                 .getRepository(ChestContent.class);
 
         new InventoryBuilder<ChestContent>("Selecione um ícone", 6)

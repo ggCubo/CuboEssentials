@@ -3,3 +3,5 @@ mysql:
   username: 'root'
   password: ''
   database: 'plugin'
+
+language: 'pt_BR'

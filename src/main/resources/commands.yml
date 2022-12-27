@@ -1,0 +1,11 @@
+gamemode-command:
+  command: ['gm', 'gamemode']
+  permission: 'cubo.essentials.command.gamemode'
+  description: 'Altera o modo de jogo do jogador'
+  usage: '/gm <modo de jogo>'
+
+light-command:
+  command: ['luz', 'light']
+  permission: 'cubo.essentials.command.light'
+  description: 'Ativa/desativa a visão noturna'
+  usage: '/luz'

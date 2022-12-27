@@ -1,0 +1,5 @@
+{
+  "invalid-gamemode": "Esse modo de jogo é inválido! Os modos de jogo válido são: sobrevivência (0), criativo (1), aventura (2), espectador (3)",
+  "invalid-player": "Esse jogador não foi encontrado",
+  "gamemode-changed": "&aSeu modo de jogo foi alterado para o modo {0}"
+}
