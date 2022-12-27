@@ -4,18 +4,14 @@ import com.google.common.collect.Lists;
 import com.spigonate.entity.Column;
 import com.spigonate.entity.Entity;
 import com.spigonate.entity.Id;
-import com.spigonate.entity.Mapped;
 import com.spigonate.entity.column.Nullable;
 import com.spigonate.entity.identity.GenerationPolicy;
 import com.spigonate.mapping.annotation.OneToMany;
 import gg.cubo.essentials.entity.chest.ChestContent;
-import gg.cubo.essentials.entity.chest.repository.ChestContentRepository;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.bukkit.Material;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.Inventory;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
@@ -33,6 +29,9 @@ public class PrivateChest {
 
     @Column
     private String name;
+
+    @Column
+    private int limits;
 
     @OneToMany
     @Nullable
@@ -75,10 +74,11 @@ public class PrivateChest {
                 .collect(Collectors.toList());
     }
 
-    public static PrivateChest of(@NotNull Player player) {
+    public static PrivateChest of(@NotNull Player player, int limit) {
         return new PrivateChest(
                 player.getUniqueId().toString(),
                 player.getName(),
+                limit,
                 null);
     }
 }

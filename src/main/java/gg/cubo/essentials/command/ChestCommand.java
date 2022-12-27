@@ -7,6 +7,7 @@ import gg.cubo.essentials.entity.chest.menu.ChestInventory;
 import gg.cubo.essentials.entity.chest.repository.ChestContentRepository;
 import gg.cubo.essentials.entity.chest.repository.ChestRepository;
 import lombok.RequiredArgsConstructor;
+import org.apache.commons.lang3.RandomUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -16,9 +17,7 @@ import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 import revxrsal.commands.annotation.Command;
 
-import java.util.Arrays;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 
 @RequiredArgsConstructor
 public class ChestCommand {
@@ -48,13 +47,12 @@ public class ChestCommand {
         Optional<PrivateChest> optChest = repository.findById(player.getUniqueId().toString());
 
         if (!optChest.isPresent()) {
-            repository.save(PrivateChest.of(player));
+            repository.save(PrivateChest.of(player, 5));
             player.sendMessage("§eUma nova conta para baús particulares foi salva. Utilize o comando /bau para criar um baú particular");
             return;
         }
 
         PrivateChest chest = optChest.get();
-        System.out.println(chest);
 
         Inventory inventory = Bukkit.createInventory(null, 6 * 9, "Baú " + (chest.getLastChestIndex() + 1) + " # " + player.getName());
         inventory.addItem(Arrays.stream(player.getInventory().getContents())
@@ -72,9 +70,5 @@ public class ChestCommand {
         repository.save(chest);
 
         player.openInventory(inventory);
-        player.sendMessage(ChatColor.GOLD + "O conteúdo do seu baú particular foi salvo, ID: #§d" + content.getId());
-        if (chest.getLastChestIndex() > 1) {
-            player.sendMessage("§aVocê possui outros: " + (chest.getChests().size() - 1) + " baús, para acessá-los, utilize /verbau <número>");
-        }
     }
 }

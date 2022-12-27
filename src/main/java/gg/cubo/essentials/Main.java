@@ -40,7 +40,7 @@ public class Main extends JavaPlugin {
                 .withUsername(getConfig().getString("mysql.username"))
                 .withPassword(getConfig().getString("mysql.password"))
                 .withAddress(getConfig().getString("mysql.address"))
-                .build(), getClass());
+                .build(), this);
 
         spigonate.map(Material.class, new MaterialMapper());
         spigonate.map(Inventory.class, new InventoryMapper());

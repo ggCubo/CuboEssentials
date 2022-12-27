@@ -6,9 +6,9 @@ import br.com.blecaute.inventory.button.ButtonType;
 import br.com.blecaute.inventory.configuration.PaginatedConfiguration;
 import com.google.common.collect.Lists;
 import gg.cubo.essentials.Main;
+import gg.cubo.essentials.entity.PrivateChest;
 import gg.cubo.essentials.entity.chest.ChestContent;
 import gg.cubo.essentials.entity.chest.repository.ChestContentRepository;
-import gg.cubo.essentials.util.bukkit.ItemBuilder;
 import org.bukkit.Material;
 import org.bukkit.craftbukkit.v1_8_R3.util.CraftMagicNumbers;
 import org.bukkit.entity.Player;
@@ -27,7 +27,7 @@ public class IconInventory {
             .build();
 
 
-    public static void open(@NotNull Player player, @NotNull ChestContent content) {
+    public static void open(@NotNull Player player, @NotNull PrivateChest chest, @NotNull ChestContent content) {
         ChestContentRepository repository = (ChestContentRepository) Main.getInstance().getSpigonate()
                 .getRepository(ChestContent.class);
 
@@ -39,6 +39,7 @@ public class IconInventory {
                             repository.save(content);
 
                             player.sendMessage("§eO ícone do seu báu foi alterado para: §d" + item.getType().name());
+                            ChestInventory.open(player, chest);
                         }
                 )
                 .open(player);

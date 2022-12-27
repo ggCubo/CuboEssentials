@@ -34,7 +34,7 @@ public class ChestInventory {
 
                         player.openInventory(inventory);
                     } else {
-                        IconInventory.open(player, content);
+                        IconInventory.open(player, chest, content);
                     }
                 })
                 .open(player);
