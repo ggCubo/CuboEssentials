@@ -1,15 +1,14 @@
 package gg.cubo.essentials.command;
 
 import com.spigonate.Spigonate;
-import gg.cubo.essentials.entity.PrivateChest;
+import gg.cubo.essentials.entity.chest.PrivateChest;
 import gg.cubo.essentials.entity.chest.ChestContent;
 import gg.cubo.essentials.entity.chest.menu.ChestInventory;
 import gg.cubo.essentials.entity.chest.repository.ChestContentRepository;
 import gg.cubo.essentials.entity.chest.repository.ChestRepository;
+import gg.cubo.essentials.menu.InventoryType;
 import lombok.RequiredArgsConstructor;
-import org.apache.commons.lang3.RandomUtils;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
@@ -35,7 +34,7 @@ public class ChestCommand {
         }
 
         PrivateChest chest = optChest.get();
-        ChestInventory.open(player, chest);
+        InventoryType.CHEST_INVENTORY.open(player, chest);
     }
 
     @Command("show all")

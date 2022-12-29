@@ -1,0 +1,6 @@
+# O ‘item’ desse menu pode ser encontrado na config.yml
+# na seção 'icon-menu-item', lá pode configurar como os itens
+# aparecerão no menu de ícones.
+inventory:
+  title: 'Selecione um ícone...'
+  lines: 6

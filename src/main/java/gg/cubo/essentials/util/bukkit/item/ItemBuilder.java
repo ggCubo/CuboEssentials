@@ -1,4 +1,4 @@
-package gg.cubo.essentials.util.bukkit;
+package gg.cubo.essentials.util.bukkit.item;
 
 import org.bukkit.Color;
 import org.bukkit.DyeColor;
@@ -50,6 +50,11 @@ public class ItemBuilder {
 
     public ItemBuilder setAmount(int amount){
         itemStack.setAmount(amount);
+        return this;
+    }
+
+    public ItemBuilder setMaterial(Material material) {
+        itemStack.setType(material);
         return this;
     }
 

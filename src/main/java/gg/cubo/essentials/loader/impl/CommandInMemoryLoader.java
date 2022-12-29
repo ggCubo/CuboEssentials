@@ -8,6 +8,7 @@ import gg.cubo.essentials.command.locale.JsonLocaleReader;
 import gg.cubo.essentials.command.locale.MessagesLocale;
 import gg.cubo.essentials.command.path.CommandNameReplacer;
 import gg.cubo.essentials.command.replacer.FileCommandReplacer;
+import gg.cubo.essentials.command.suggestion.HomeTypeSuggestion;
 import gg.cubo.essentials.loader.InMemoryLoader;
 import gg.cubo.essentials.util.Log;
 import gg.cubo.essentials.util.file.FileUtil;
@@ -48,6 +49,8 @@ public class CommandInMemoryLoader implements InMemoryLoader {
 
         handler.registerAnnotationReplacer(NamedCommand.class, new CommandNameReplacer(replacer));
         handler.disableStackTraceSanitizing();
+
+        handler.getAutoCompleter().registerSuggestionFactory(new HomeTypeSuggestion());
 
         handler.register(new ChestCommand(spigonate));
         handler.register(new GeneralCommands(spigonate));

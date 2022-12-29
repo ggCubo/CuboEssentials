@@ -2,10 +2,34 @@ gamemode-command:
   command: ['gm', 'gamemode']
   permission: 'cubo.essentials.command.gamemode'
   description: 'Altera o modo de jogo do jogador'
-  usage: '/gm <modo de jogo>'
+  usage: '/gm <modo de jogo>.'
 
 light-command:
   command: ['luz', 'light']
   permission: 'cubo.essentials.command.light'
   description: 'Ativa/desativa a visão noturna'
   usage: '/luz'
+
+hat-command:
+  command: ['chapeu', 'hat']
+  permission: 'cubo.essentials.command.hat'
+  description: 'Troca o capacete atual do jogador por qualquer outro item'
+  usage: '/hat'
+
+homes-command:
+  command: ['homes', 'seehomes', 'verhomes', 'homeslista', 'listhomes']
+  permission: 'cubo.essentials.command.homes'
+  description: 'Vê todas as homes criadas pelo jogador que utilizou o comando'
+  usage: '/homes'
+
+home-command:
+  command: ['home', 'casa', 'homeir', 'irhome']
+  permission: 'cubo.essentials.command.home'
+  description: 'Teleporta até uma home'
+  usage: '/home <nome da home>'
+
+sethome-command:
+  command: ['sethome', 'definirhome']
+  permission: 'cubo.essentials.command.sethome'
+  description: 'Define uma home com um nome e o tipo dela, se é privada ou não'
+  usage: '/sethome <nome> <tipo da home>.'

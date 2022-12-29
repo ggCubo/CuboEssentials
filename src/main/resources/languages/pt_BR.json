@@ -1,5 +1,14 @@
 {
   "invalid-gamemode": "Esse modo de jogo é inválido! Os modos de jogo válido são: sobrevivência (0), criativo (1), aventura (2), espectador (3)",
-  "invalid-player": "Esse jogador não foi encontrado",
-  "gamemode-changed": "&aSeu modo de jogo foi alterado para o modo {0}"
+  "invalid-player": "Esse jogador não foi encontrado.",
+  "invalid-home-name": "Você não pode criar uma home com esse nome!",
+  "error-max-homes-reached": "Você já atingiu o máximo de homes possíveis.",
+  "error-player-cant-access-home": "Você não pode ir até essa home pois ela é privada.",
+  "error-home-not-found": "&cEssa home não foi encontrada em nosso banco de dados.",
+  "success-gamemode-changed": "&aSeu modo de jogo foi alterado para o modo {0}.",
+  "invalid-hat-type": "Esse tipo de chapéu não pode ser usado.",
+  "success-hat-changed": "&aVocê trocou o seu capacete por um item!",
+  "success-home-created": "&eVocê criou uma home &b{0} &ena sua posição de nome &b{1}&e!",
+  "success-home-teleported-target": "&aVocê foi teleportado para a home &f{0} &ade &f{1}&a.",
+  "see-homes-command": "&ePara ver suas homes criadas, utilize o comando: &b/homes"
 }

@@ -7,7 +7,7 @@ import com.spigonate.entity.interceptor.OrderBy;
 import com.spigonate.entity.interceptor.order.OrderType;
 import com.spigonate.model.annotation.Repository;
 import com.spigonate.repository.SpigonateRepository;
-import gg.cubo.essentials.entity.PrivateChest;
+import gg.cubo.essentials.entity.chest.PrivateChest;
 
 import java.util.Collection;
 import java.util.Optional;

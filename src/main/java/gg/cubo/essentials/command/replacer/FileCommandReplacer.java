@@ -10,6 +10,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.Plugin;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import revxrsal.commands.annotation.Cooldown;
 import revxrsal.commands.annotation.Description;
 import revxrsal.commands.annotation.Usage;
 import revxrsal.commands.annotation.dynamic.Annotations;
@@ -68,6 +69,11 @@ public class FileCommandReplacer {
         if (section.isSet("permission")) {
             String permission = section.getString("description");
             annotations.add(Annotations.create(CommandPermission.class, "value", permission));
+        }
+
+        if (section.isSet("cooldown")) {
+            int cooldown = section.getInt("cooldown");
+            annotations.add(Annotations.create(Cooldown.class, "value", cooldown));
         }
 
         return annotations;

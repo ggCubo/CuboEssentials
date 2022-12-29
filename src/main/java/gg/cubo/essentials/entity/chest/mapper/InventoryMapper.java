@@ -2,7 +2,7 @@ package gg.cubo.essentials.entity.chest.mapper;
 
 import com.spigonate.entity.ColumnMapper;
 import com.spigonate.mapping.Mapper;
-import gg.cubo.essentials.util.bukkit.InventorySerializer;
+import gg.cubo.essentials.util.bukkit.inventory.InventorySerializer;
 import org.bukkit.inventory.Inventory;
 
 @ColumnMapper("LONGTEXT")

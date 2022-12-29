@@ -1,0 +1,6 @@
+# O ‘item’ desse menu pode ser encontrado na config.yml
+# na seção 'particular-chest-icon', lá pode configurar
+# como os baús aparecerão no menu.
+inventory:
+  title: 'Seus baús particulares'
+  lines: 6

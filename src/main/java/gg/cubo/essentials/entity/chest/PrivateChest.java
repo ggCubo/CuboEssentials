@@ -1,4 +1,4 @@
-package gg.cubo.essentials.entity;
+package gg.cubo.essentials.entity.chest;
 
 import com.google.common.collect.Lists;
 import com.spigonate.entity.Column;
@@ -7,7 +7,7 @@ import com.spigonate.entity.Id;
 import com.spigonate.entity.column.Nullable;
 import com.spigonate.entity.identity.GenerationPolicy;
 import com.spigonate.mapping.annotation.OneToMany;
-import gg.cubo.essentials.entity.chest.ChestContent;
+import gg.cubo.essentials.menu.impl.icon.IconItem;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -43,6 +43,12 @@ public class PrivateChest {
         } else {
             chests.add(chest);
         }
+    }
+
+    public Collection<IconItem> getChestsAsIcon() {
+        return getSortedChests().stream()
+                .map(chest -> new IconItem(chest.getIcon()))
+                .collect(Collectors.toList());
     }
 
     public Collection<ChestContent> getSortedChests() {

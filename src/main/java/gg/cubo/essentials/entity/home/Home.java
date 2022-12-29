@@ -1,4 +1,4 @@
-package gg.cubo.essentials.entity.chest;
+package gg.cubo.essentials.entity.home;
 
 import br.com.blecaute.inventory.property.InventoryProperty;
 import br.com.blecaute.inventory.type.InventoryItem;
@@ -9,10 +9,15 @@ import com.spigonate.entity.Mapped;
 import gg.cubo.essentials.Essentials;
 import gg.cubo.essentials.placeholder.PlaceholderReplacer;
 import gg.cubo.essentials.placeholder.Replaceable;
+import gg.cubo.essentials.util.bukkit.LocationUtil;
 import gg.cubo.essentials.util.bukkit.item.ItemBuilder;
-import gg.cubo.essentials.util.bukkit.item.ItemTranslates;
 import gg.cubo.essentials.util.bukkit.item.ItemUtil;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.bukkit.ChatColor;
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -21,59 +26,63 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
-@Entity(tableName = "essentials_chest_content")
+@Entity(tableName = "essentials_home")
 @AllArgsConstructor
-@RequiredArgsConstructor
-@Builder(setterPrefix = "with")
+@NoArgsConstructor
+@Builder
 @Data
-@Replaceable({"{id}", "{items}", "{icon}", "{lines}"})
-public class ChestContent implements InventoryItem, PlaceholderReplacer<ChestContent> {
+@Replaceable({
+   "{id}", "{name}", "{owner}", "{location}",
+   "{type}"
+})
+public class Home implements PlaceholderReplacer<Home>, InventoryItem {
 
     @Id
     @Column
     private long id;
 
     @Column
-    private int line;
+    private String name;
+
+    @Column
+    private String owner;
 
     @Mapped
     @Column
+    private Location location;
+
+    @Mapped
+    @Column
+    private HomeType type;
+
+    @Mapped
+    @Column
+    @Nullable
     private Material icon;
-
-    @Mapped
-    @Column
-    private ItemStack[] content;
-
-    public long getItemAmount() {
-        return Arrays.stream(content)
-                .filter(Objects::nonNull)
-                .filter(item -> item.getType() != Material.AIR)
-                .mapToInt(ItemStack::getAmount)
-                .sum();
-    }
 
     @Override
     public @Nullable ItemStack getItem(@NotNull Inventory inventory, @NotNull InventoryProperty inventoryProperty) {
-        ItemBuilder builder = new ItemBuilder(ItemUtil.toItem(Essentials.getInstance(), "particular-chest-icon"));
+        ItemBuilder builder = new ItemBuilder(ItemUtil.toItem(Essentials.getInstance(), "homes-icon"));
         builder.setMaterial(icon);
 
-        return builder.setName(replace(builder.getName(), this))
+        return builder.setMaterial(icon)
+                .setName(replace(builder.getName(), this))
                 .setLore(builder.getLore().stream()
                         .map(line -> replace(line, this))
-                        .collect(Collectors.toList()))
-                .toItemStack();
+                        .collect(Collectors.toList())
+        ).toItemStack();
     }
 
     @Override
-    public List<String> replace(ChestContent data) {
+    public List<String> replace(Home data) {
         return Arrays.asList(
                 String.valueOf(data.getId()),
-                String.valueOf(data.getItemAmount()),
-                ItemTranslates.valueOf(icon, (short) 0).getItemName(),
-                String.valueOf(data.getLine())
+                data.getName(),
+                data.getOwner(),
+                LocationUtil.beauty(location, ChatColor.AQUA, ChatColor.WHITE),
+                type.getTranslated()
         );
     }
 }

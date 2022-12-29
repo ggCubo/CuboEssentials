@@ -1,4 +1,4 @@
-package gg.cubo.essentials.util.bukkit;
+package gg.cubo.essentials.util.bukkit.inventory;
 
 import org.bukkit.Bukkit;
 import org.bukkit.inventory.Inventory;

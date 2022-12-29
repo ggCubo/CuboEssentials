@@ -4,6 +4,8 @@ import com.spigonate.model.annotation.Repository;
 import com.spigonate.repository.SpigonateRepository;
 import gg.cubo.essentials.entity.chest.ChestContent;
 
+import java.util.Collection;
+
 /**
  * Chest content repository used to handle some custom methods handled
  * by an invoke handler proxy.

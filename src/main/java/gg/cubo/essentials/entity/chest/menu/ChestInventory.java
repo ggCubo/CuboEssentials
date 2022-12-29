@@ -4,40 +4,39 @@ import br.com.blecaute.inventory.InventoryBuilder;
 import br.com.blecaute.inventory.button.Button;
 import br.com.blecaute.inventory.button.ButtonType;
 import br.com.blecaute.inventory.configuration.PaginatedConfiguration;
-import gg.cubo.essentials.entity.PrivateChest;
+import gg.cubo.essentials.entity.chest.PrivateChest;
 import gg.cubo.essentials.entity.chest.ChestContent;
 import gg.cubo.essentials.entity.chest.holder.PrivateChestHolder;
+import gg.cubo.essentials.menu.InventoryType;
+import gg.cubo.essentials.menu.impl.IconInventory;
+import gg.cubo.essentials.menu.InventoryConfiguration;
+import gg.cubo.essentials.menu.MenuInventory;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
-import org.jetbrains.annotations.NotNull;
 
-public class ChestInventory {
+@InventoryConfiguration("particular-chest-menu")
+public class ChestInventory implements MenuInventory {
 
-    private static final PaginatedConfiguration configuration = PaginatedConfiguration.builder("#ranks")
-            .start(10).size(28).end(44)
-            .button(Button.of(ButtonType.NEXT_PAGE, 26, new ItemStack(Material.ARROW)))
-            .button(Button.of(ButtonType.PREVIOUS_PAGE, 18, new ItemStack(Material.ARROW)))
-            .validator((slot) -> slot == 17 || slot == 18 || (slot == 26 || slot == 27) || (slot == 35 || slot == 36))
-            .build();
+    @Override
+    public void open(Player player, Object... objects) {
+        PrivateChest chest = (PrivateChest) objects[0];
 
-    public static void open(@NotNull Player player, @NotNull PrivateChest chest) {
-        new InventoryBuilder<ChestContent>("Seus baús particulares", 6)
-                .withObjects(configuration, chest.getSortedChests(), click -> {
-                    ChestContent content = click.getObject();
+        InventoryBuilder<ChestContent> builder = createBuilder();
+        builder.withObjects(PAGINATED_CONFIGURATION, chest.getSortedChests(), click -> {
+            ChestContent content = click.getObject();
 
-                    if (click.getEvent().isLeftClick()) {
-                        Inventory inventory = Bukkit.createInventory(new PrivateChestHolder(content), content.getLine() * 9, "Baú particular");
-                        inventory.setContents(content.getContent());
+            if (click.getEvent().isLeftClick()) {
+                Inventory inventory = Bukkit.createInventory(new PrivateChestHolder(content), content.getLine() * 9, "Baú particular");
+                inventory.setContents(content.getContent());
 
-                        player.openInventory(inventory);
-                    } else {
-                        IconInventory.open(player, chest, content);
-                    }
-                })
-                .open(player);
+                player.openInventory(inventory);
+            } else {
+                InventoryType.ICON_INVENTORY.open(player, InventoryType.CHEST_INVENTORY, content);
+            }
+        });
+        builder.open(player);
     }
-
 }

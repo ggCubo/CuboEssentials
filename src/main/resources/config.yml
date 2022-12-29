@@ -5,3 +5,31 @@ mysql:
   database: 'plugin'
 
 language: 'pt_BR'
+
+homes-icon:
+  name: '&b{id}# &e{name}'
+  lore:
+    - '&7Essa home está localizada em'
+    - '{location}'
+    - ''
+    - '&eOpções disponíveis'
+    - '&fBotão direito &8- &7altera o ícone da home'
+    - '&fBotão esquerdo &8- &7teleporta até a home'
+
+particular-chest-icon:
+  name: '&bBaú particular &e#{id}'
+  lore:
+    - '&7Esse baú particular seu possui {items} itens.'
+    - '&7Clique para acessá-lo'
+    - ''
+    - '&eOutras opções'
+    - '&fBotão direito &8- &7troca o ícone do baú particular'
+
+icon-menu-item:
+  lore:
+    - '&7Clique para selecionar esse ícone'
+
+hat:
+  blocked-items:
+    - 'BEDROCK'
+
