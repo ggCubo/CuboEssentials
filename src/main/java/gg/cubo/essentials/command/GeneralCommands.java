@@ -49,9 +49,7 @@ public class GeneralCommands {
         ItemStack hand = player.getItemInHand();
         ItemStack helmet = player.getInventory().getHelmet();
 
-        if (hand != null && hand.getType().name().contains("HELMET")
-                && hand.getType() != Material.AIR
-                && hand.getType().getMaxDurability() == 0) {
+        if (hand != null && hand.getType() != Material.AIR) {
             player.getInventory().setHelmet(hand);
             player.setItemInHand(helmet);
             actor.replyLocalized("success-hat-changed");
