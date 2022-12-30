@@ -8,19 +8,15 @@ import gg.cubo.essentials.entity.home.repository.HomeRepository;
 import gg.cubo.essentials.menu.InventoryType;
 import gg.cubo.essentials.types.GameModes;
 import gg.cubo.essentials.util.Util;
-import gg.cubo.essentials.util.bukkit.LocationUtil;
 import lombok.RequiredArgsConstructor;
-import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
-import revxrsal.commands.annotation.Command;
 import revxrsal.commands.annotation.Cooldown;
 import revxrsal.commands.annotation.Default;
 import revxrsal.commands.bukkit.core.BukkitActor;
 
-import java.text.MessageFormat;
 import java.util.Collection;
 import java.util.Optional;
 

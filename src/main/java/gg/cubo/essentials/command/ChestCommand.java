@@ -37,28 +37,6 @@ public class ChestCommand {
         InventoryType.CHEST_INVENTORY.open(player, chest);
     }
 
-    @Command("show all")
-    public void showAll(@NotNull Player player) {
-        ChestRepository repository = (ChestRepository) spigonate.getRepository(PrivateChest.class);
-        Collection<PrivateChest> chests = repository.findAllSorted();
-
-        player.sendMessage("Foram encontrados §b" + chests.size() + " §fbaús. Ordenados por limite");
-        for (PrivateChest chest : chests) {
-            player.sendMessage(" -> §b" + chest.getName() + " §fpossui §b" + chest.getChests().size() + " §fbaús | Limite: §b" + chest.getLimits());
-        }
-    }
-
-    @Command("show limit")
-    public void showAllLimit(@NotNull Player player, int limit) {
-        ChestRepository repository = (ChestRepository) spigonate.getRepository(PrivateChest.class);
-        Collection<PrivateChest> chests = repository.findAllByLimits(limit);
-
-        player.sendMessage("Foram encontrados §b" + chests.size() + " §fbaús. Ordenados por limite");
-        for (PrivateChest chest : chests) {
-            player.sendMessage(" -> §b" + chest.getName() + " §fpossui §b" + chest.getChests().size() + " §fbaús | Limite: §b" + chest.getLimits());
-        }
-    }
-
     @Command("bau")
     public void chest(@NotNull Player player) {
         ChestRepository repository = (ChestRepository) spigonate.getRepository(PrivateChest.class);
